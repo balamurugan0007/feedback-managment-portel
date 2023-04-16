@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Mart</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-------barchart cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+<body>
+    
+  <div class="container">
+    <h2 class="text-center mt-4" id="head">
+      Product Analysis
+    </h2>
+    <section class="sample mt-4">
+      <div class="row">
+        <!---             first col      -->
+        
+        <div class="col-6">
+          {% for models in product %}
+          <h2 id="product-name" class="text-center mt-3">{{models.name}}</h2>
+          <img src="{{models.image.url}}" alt="pic" class="img-responsive " id="image"/>
+          <div class="barchart d-flex mt-3">
+            <p class="mx-1">product analysis result has completed.<br>Click the button to cheak the Analysis report</p>
+          <button class="btn btn-primary mx-1" onclick="result()">
+            Result 
+          </button>
+          </div>
+          {% endfor %}
+
+
+          <!--------barchart-->
+
+          <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+
+        </div>
+
+
+        <!----        second col          -->
+        <div class="col">
+          {% for item in data %}
+          {% if item.overall == 'positive' %}
+          <div class="card border-success mt-3">
+            <div class="text d-flex">
+              <h2 class="mx-2">{{item.name}}</h2>
+              <h3 class="mx-2">Ratings{{item.rate}}</h3>
+            </div>
+            <p class="mx-2" id="feedback">{{item.reviews}}</p>
+          </div>
+          {% else %}
+          <div class="card border-danger mt-3">
+            <div class="text d-flex">
+              <h2 class="mx-2">{{item.name}}</h2>
+              <h3 class="mx-2">Ratings{{item.rate}}</h3>
+            </div>
+            <p class="mx-2" id="feedback">{{item.reviews}}</p>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+    
+  </div>
+    
+    
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@1,700&family=Inter:wght@700&family=Noto+Sans:ital,wght@1,500&family=Open+Sans:ital,wght@1,700&family=Poppins:ital,wght@0,500;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Prompt:wght@600&display=swap');
+  
+#head{
+  font-family: Lora;
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(224, 26, 181);
+}.text h2{
+ font-family: Inter;
+ font-size: large;
+ font-weight: 600;
+ opacity: .9;
+}.text h3{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: small;
+  font-weight: 500;
+}
+.text{
+  justify-content: space-between;
+}#feedback{
+  font-family: Poppins;
+  font-size: small;
+  opacity: .8;
+  
+}#image{
+  width: 70%;
+  height: 500px;
+  display: grid;
+  align-items: center;
+  margin-left: 100px;
+  
+}#product-name{
+  font-size: xx-large;
+  font-family: Poppins;
+  font-weight: 600;
+  color: #D6208A;
+}.barchart{
+  justify-content: space-between;
+  width: 70%;
+  align-items: center;
+
+}.barchart p{
+  font-family: Inter;
+  font-size: medium;
+  font-weight: 500;
+}
+</style>
+<script>
+  var xValues = ["Positive", "Neutral", "Negative"];
+  var yValues = [55, 30, 20, 15];
+  var barColors = ["green", "blue","red"];
+  
+  new Chart("myChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "product sentiment analysis"
+      }
+    }
+  });
+
+
+  
+  function result(){
+    var x=document.getElementById('myChart');
+    if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+
+
+  }
+  </script>
+</html>

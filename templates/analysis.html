@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Mart</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+<body>
+  
+  
+  
+  <div class="container">
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand" id="nav-head">Fashion mart</a>
+      <form class="form-inline d-flex " method="POST" action="">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2 mx-2" type="search" placeholder="Enter product name" aria-label="Search"  name="search" >
+        <button class="btn btn-outline-success my-2 my-sm-0 mx-2" type="submit">Search</button>
+      </form>
+    </nav>
+  </div>
+  
+  
+ <section class="table mt-4">
+  <table class="table">
+    <thead class="thead-light">
+      <tr class="table-head">
+        <th scope="col">Username</th>
+        <th scope="col">Ratings</th>
+        <th scope="col">Product</th>
+        <th scope="col">Feedback</th>
+        <th scope="col">sentiment analysis</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in data %}
+      {% if item.overall == 'positive' %}
+      
+      <tr class="table-info">
+        
+        
+        <div class="row ">
+         
+          <td>{{item.name}}</td>
+          <td>{{item.rate}}</td>
+          <td>{{item.productname}}</td>
+          <td>{{item.reviews}}</td>
+          <td>{{item.overall}}</td>
+   
+        
+        
+      </tr>
+      {% elif item.overall == 'Neutral'  %}
+      <tr class="table-primary">
+        
+        
+        <div class="row ">
+          
+          <td>{{item.name}}</td>
+          <td>{{item.rate}}</td>
+          <td>{{item.productname}}</td>
+          <td>{{item.reviews}}</td>
+          <td>{{item.overall}}</td>
+     
+        
+      </tr>
+      {% else %}
+      <tr class="bg-danger">
+       
+        
+        <div class="row">
+         
+          <td>{{item.name}}</td>
+          <td>{{item.rate}}</td>
+          <td>{{item.productname}}</td>
+          <td>{{item.reviews}}</td>
+          <td>{{item.overall}}</td>
+        </div>
+      
+        
+      </tr>
+      {% endif %}
+      {% endfor %}
+     
+    </tbody>
+  </table>
+ </section>
+  
+</body>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@1,700&family=Inter:wght@700&family=Noto+Sans:ital,wght@1,500&family=Open+Sans:ital,wght@1,700&family=Poppins:ital,wght@0,500;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Prompt:wght@600&display=swap');
+  
+  .table-head th{
+    font-family:Lora ;
+    font-size: large;
+    font-weight: bold;
+
+  }.table-info td{
+    font-size: medium;
+    font-weight: bold;
+    font-family: Roboto;
+    opacity: .7;
+  }.bg-danger td{
+    font-size: medium;
+    font-weight: bold;
+    font-family: Roboto;
+    color: rgb(255, 255, 255);
+    opacity: .7;
+    
+  }#product-anchor{
+    color: white;
+    text-decoration: none;
+  }#product-anchor1{
+    color: rgb(124, 122, 122);
+    text-decoration: none;
+  }#nav-head{
+        font-size: 28px;
+        font-family:Lora;
+        font-weight: bolder;
+        cursor: pointer;
+
+        color:#FF00A7;
+
+      }
+</style>
+</html>

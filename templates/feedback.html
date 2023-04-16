@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback portel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<!-----font awose icons-->
+<script src="https://kit.fontawesome.com/f6a33d9c09.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <script src="{% static 'app.js' %}"></script>
+    <div class="container">
+        <div class="">
+            <img src="https://i0.wp.com/ketto.blog/wp-content/uploads/2021/09/shutterstock_1100033681-min-1.jpg?fit=5000%2C2813&ssl=1"
+            alt="feedback-img" id="banner-pic"/>
+
+        </div>
+
+       <!--==========        Trending sections              =========-->
+       <section class="trending-section">
+        <div class="container ">
+            <div class="row mt-4" id="trending-container">
+                <div class="col-md-5 mt-4 ">
+                    
+                        <div class="text my-4">
+                            <h2 class="text-start mx-2 mt-4">
+                                Feedback
+                            </h2>
+                            <h1 class="text-start my-4">
+                                Trending Topics <br>people search <br>recent days
+                            </h1>
+                            <p class="text-start">
+                                It will give the information about what people are expecting now a days
+                            </p>
+                           <a href="#"><button class="btn btn-primary" >
+                                Click here
+                            </button></a>
+                        </div>
+                    
+                </div>
+    
+    
+                <div class="col-md-7 d-flex justify-content-center ">
+                    <img src="https://storage.jukeboxprint.com/s/images/Graphic%20Design%20Trends%202023%206.png"
+                    alt="feedback analsis pic"
+                    id="feedback-pics"
+                    class="img-fluid mx-3"/>
+                </div>
+            </div>
+        </div>
+       </section>
+
+
+       <!---=========        analysis feedbacks            ========-->
+        <section class="sentiment-analysis mt-4 my-4">
+            <div class="container">
+                <a  href="{% url 'sentiment' %}"> <div class="row d-flex justify-content-center my-4">
+                    <div class="sentiment-text">
+                        <h2 class="text-center text-danger my-4">
+                           SENTIMENT ANALYSIS 
+                       </h2>
+                       <h1 class="text-center my-3">
+                        Percentage of the Sentiment <br>Analysis
+                       </h1>
+                       <p class="text-center my-4">
+                        The sentiment analysis has usefull to know about peoples expectation
+                       </p>
+                       <div class="row" id="sentiment-box">
+                        <div class="col-md-4 d-flex justify-content-center my-4">
+                            <div class="postive-feedback my-4">
+                             
+                                    <h2 class="text-success text-center ">68.58%</h2>
+                            <h4 class="text-center"> Positive</h4>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-center my-4">
+                           <div class="Normal-feedback my-4">
+                            <h2 class="text-primary text-center ">22.02%</h2>
+                            <h4 class=" text-center"> Normal</h4>
+                           </div>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-center my-4">
+                            <div class="Negative-feedback my-4">
+                                <h2 class="text-danger text-center my-2">10.40%</h2>
+                                <h4 class="text-center"> Negative</h4>
+                               </div>
+                        </div>
+
+                       </div>
+
+                    </div>
+                </div> </a> 
+            </div>
+        </section>
+    </div>
+
+<!--========                script files        =======-->
+    
+    
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@1,700&family=Inter:wght@700&family=Noto+Sans:ital,wght@1,500&family=Open+Sans:ital,wght@1,700&family=Poppins:ital,wght@0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Prompt:wght@600&display=swap');
+
+    body {
+    background-color: rgb(245, 243, 241);
+    }
+    #banner-pic{
+        height: 500px;
+        width: 100%;
+    }.sentiment-text{
+        font-family:Poppins;
+        font-weight: bolder;
+        font-size: medium;
+    }.container a{
+        text-decoration: none;
+    }.sentiment-text h2{
+        font-size: larger;
+        font-family: Inter;
+        font-weight: bold;
+    }.sentiment-text h1{
+        font-size: 40px;
+        font-family: Lora;
+        color: rgb(75, 72, 72);
+
+    }.sentiment-text p{
+        font-size: small;
+        color: black;
+        opacity: .6;
+    }#sentiment-box{
+        font-size: medium;
+        font-family: Roboto;
+        font-weight: 300;
+        opacity: .8;
+        color: #313131;
+    }.text h2{
+        font-size: larger;
+        font-weight: bolder;
+        font-family: Inter;
+        opacity: .7;
+    }.text h1{
+        font-family: Roboto;
+        font-size: 36px;
+        font-weight: bolder;
+        opacity: .85;
+    }.text p{
+        font-family: Poppins;
+        font-size: medium;
+        font-weight: 300;
+        opacity: .6;
+    } #feedback-pics{
+        height: 350px;
+    }
+</style>
+
+</html>

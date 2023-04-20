@@ -44,6 +44,7 @@ urlpatterns = [
     path('home/ratings/<int:id>',feedback.Ratings,name='ratings'),
     path('portel/sentiment',feedback.Sentiment,name='sentiment'),
     path('portel/seprate',feedback.seprate,name='seprate'),
+     path('portel/seprate/<str:name>',feedback.seprate,name='seprate12'),
 
     
     

@@ -19,6 +19,7 @@
       <a class="navbar-brand" id="nav-head">Fashion mart</a>
       <form class="form-inline d-flex " method="POST" action="">
         {% csrf_token %}
+       
         <input class="form-control mr-sm-2 mx-2" type="search" placeholder="Enter product name" aria-label="Search"  name="search" >
         <button class="btn btn-outline-success my-2 my-sm-0 mx-2" type="submit">Search</button>
       </form>

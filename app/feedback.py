@@ -127,8 +127,23 @@ def Ratings(request,id):
                 if keyword in feedback.lower():
                     print('Your feedback is:', category)
                     cat=category
-                    a.append(cat)
-                    print(a)
+                    if cat=='Service':
+                    
+                        #service_obj=review.objects.create(catogory_sevice=True)
+                       # service_obj.save()
+                       obj.catogory_service=True
+                    
+                    if cat=='Appearance':
+                        obj.catogory_appear=True
+
+                    if cat=='Quality':
+                        obj.catogory_qty=True
+
+                    if cat=='Price':
+                        obj.catogory_price=True
+                        
+                        
+
 
         obj.catogory=a
                     
@@ -150,18 +165,24 @@ def Ratings(request,id):
 
 def Sentiment(request):
     feedback=review.objects.all()
+    
 
     if request.method=="POST":
+        global product_name_id
         find = request.POST.get('search')
-        print(find)
+        
         if (products.objects.filter(name=find)):
-            product_details=products.objects.filter(name=find)
+           global product_details
+           product_details=products.objects.filter(name=find)
         if (review.objects.filter(productname=find)):
-            review_details=review.objects.filter(productname=find)
-
-            return render (request,'seprate.html',{'data':review_details,"product":product_details})
-
+          global review_details
+          review_details=review.objects.filter(productname=find)
             
+
+          return redirect (seprate)
+        
+
+        product_name_id=find    
                 
                     
         
@@ -170,8 +191,16 @@ def Sentiment(request):
 
 
 def seprate(request):
+     
+     
     
-    return render(request,'seprate.html')
+    
+
+    
+    return render(request,'seprate.html',{'data':review_details,"product":product_details,})
+        
+    
+   
     
 
 

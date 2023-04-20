@@ -61,6 +61,10 @@ class review(models.Model):
 
     
     overall=models.CharField(max_length=100,blank=False,null=False)
+    catogory_qty=models.BooleanField(default=False,help_text="0-show,1-Hidden")
+    catogory_service=models.BooleanField(default=False,help_text="0-show,1-Hidden")
+    catogory_appear=models.BooleanField(default=False,help_text="0-show,1-Hidden")
+    catogory_price=models.BooleanField(default=False,help_text="0-show,1-Hidden")
     
     def __str__(self) :
         return self.name

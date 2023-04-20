@@ -31,6 +31,7 @@
           <button class="btn btn-primary mx-1" onclick="result()">
             Result 
           </button>
+          
           </div>
           {% endfor %}
 
@@ -44,7 +45,9 @@
 
 
         <!----        second col          -->
-        <div class="col">
+        <div class="col" >
+          <div class="feedback" id='colum'>
+          
           {% for item in data %}
           {% if item.overall == 'positive' %}
           <div class="card border-success mt-3">
@@ -61,16 +64,54 @@
               <h3 class="mx-2">Ratings{{item.rate}}</h3>
             </div>
             <p class="mx-2" id="feedback">{{item.reviews}}</p>
+            <p>{{item.catogory}}</p>
+            
           </div>
           {% endif %}
           {% endfor %}
+          </div>
+          <!--------catogory splitting -->
+          <div class="button group mt-4">
+            <button class="btn btn-outline-primary mx-2" onclick="Appearce()" >
+              Appearance
+            </button>
+            <button class="btn btn-outline-success mx-2" onclick="Quality()">
+              Quality
+            </button>
+            <button class="btn btn-outline-warning mx-2" onclick="Service()">
+              Service
+            </button>
+            <button class="btn btn-outline-danger mx-2" onclick="Price()">
+              Price
+            </button>
+            
+          </div>
 
+
+          <!-----   dashborad for catogory  -->
+          <div class="catogry-split" id="catogory-price">
+
+          </div>
+          <div class="catogry-split" id="catogory-appear">
+
+          </div>
+          <div class="catogry-split" id="catogory-quality">
+
+          </div>
+          <div class="catogry-split" id="catogory-service">
+
+          </div>
         </div>
+
+
+        
       </div>
     </section>
     
   </div>
-    
+
+  <!---                      catogory base chart   -->
+ 
     
 </body>
 
@@ -121,6 +162,10 @@
   font-family: Inter;
   font-size: medium;
   font-weight: 500;
+}#colum{
+  height:400px;
+  overflow-y: scroll;
+  
 }
 </style>
 <script>
@@ -158,5 +203,34 @@
 
 
   }
+
+
+  // catogory splitng button
+
+  //appearance
+  function Appearce(){
+    var feedback = document.getElementById('catogory-appear');
+    feedback.innerHTML=`<img src='' onerror='alert("Error loading image")'>`;
+  }
+
+  // Quality
+
+  function Quality(){
+    var feedback = document.getElementById('catogory-quality');
+    feedback.innerHTML=`<img src='' onerror='alert("Error loading image")'>`;
+  }
+
+  // service
+  function Service(){
+    var feedback = document.getElementById('catogory-service');
+    feedback.innerHTML=`<img src='' onerror='alert("Error loading image")'>`;
+  }
+
+  // price
+  function Price(){
+    var feedback = document.getElementById('catogory-price');
+    feedback.innerHTML=`<img src='' onerror='alert("Error loading image")'>`;
+  }
+
   </script>
 </html>
